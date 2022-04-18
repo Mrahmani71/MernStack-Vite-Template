@@ -1,8 +1,7 @@
 node_modules
+pnpm-lock.yaml
 .DS_Store
 dist
 dist-ssr
 *.local
 .eslintcache
-/node_modules
-node_modules/*

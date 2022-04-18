@@ -7,6 +7,7 @@ module.exports = {
   extends: [
     "plugin:react/recommended",
     "airbnb",
+    "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
   ],
   parserOptions: {
@@ -15,8 +16,20 @@ module.exports = {
     },
     ecmaVersion: "latest",
     sourceType: "module",
+    requireConfigFile: false,
   },
-  plugins: ["react", "prettier"],
+  settings: {
+    react: {
+      version: "18.0",
+    },
+    "import/resolver": {
+      node: {
+        paths: ["src"],
+        extensions: [".js", ".jsx"],
+      },
+    },
+  },
+  plugins: ["react", "prettier", "jsx-a11y", "simple-import-sort"],
   rules: {
     quotes: [
       "error",
@@ -30,5 +43,15 @@ module.exports = {
     "react/jsx-props-no-spreading": ["warn"],
     "no-shadow": "off",
     "no-console": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        components: ["Link"],
+        specialLink: ["hrefLeft", "hrefRight"],
+        aspects: ["invalidHref", "preferButton"],
+      },
+    ],
   },
 };
